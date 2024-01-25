@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1705472916 source:f:\bt\main.cpp
+	<iostream>
+	<vector>
+	<string>
+	<algorithm>
+
