@@ -179,18 +179,31 @@ cin >> newBook.copies;
 }
 void tim_kiem_sach(string role){
 do {
- string title;
- bool found = false;
- cout << "===== TIM KIEM SACH =====\n";
- cout << "Nhap tieu de sach: ";
-cin.ignore();
- getline(cin, title);
- for (const auto& book : books) {
- if (book.title == title) {
- hien_thi_sach(book);
- found = true;
- }
- }
+ string title, subject, author, publisher, date;
+        bool found = false;
+        cout << "===== TIM KIEM SACH =====\n";
+        cout << "Nhap tieu de sach (de trong neu khong tim kiem theo tieu de): ";
+        cin.ignore();
+        getline(cin, title);
+        cout << "Nhap chu de sach (de trong neu khong tim kiem theo chu de): ";
+        getline(cin, subject);
+        cout << "Nhap tac gia sach (de trong neu khong tim kiem theo tac gia): ";
+        getline(cin, author);
+        cout << "Nhap nha xuat ban sach (de trong neu khong tim kiem theo nha xuat ban): ";
+        getline(cin, publisher);
+        cout << "Nhap nam xuat ban sach (de trong neu khong tim kiem theo nam xuat ban): ";
+        getline(cin, date);
+
+        for (const auto& book : books) {
+            if ((title.empty() || book.title.find(title) != string::npos) &&
+                (subject.empty() || book.subject.find(subject) != string::npos) &&
+                (author.empty() || book.author.find(author) != string::npos) &&
+                (publisher.empty() || book.publisher.find(publisher) != string::npos) &&
+                (date.empty() || book.date.find(date) != string::npos)) {
+                hien_thi_sach(book);
+                found = true;
+            }
+        }
  char choice;
  if(!found)
  cout << "Khong tim thay sach voi tieu de: '" << title << "'\n";
